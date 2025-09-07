@@ -1,0 +1,6 @@
+@CareerVault_Backend_HostAddress = http://localhost:5056
+
+GET {{CareerVault_Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
