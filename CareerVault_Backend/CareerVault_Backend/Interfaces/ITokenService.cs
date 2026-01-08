@@ -1,6 +1,9 @@
-﻿namespace CareerVault_Backend.Interfaces
+﻿using CareerVault_Backend.Models.User;
+
+namespace CareerVault_Backend.Interfaces
 {
-    public class ITokenService
+    public interface ITokenService
     {
+        public Task<string> CreateToken(AppUser user, IEnumerable<string> roles);
     }
 }
