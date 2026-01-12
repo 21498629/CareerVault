@@ -86,14 +86,14 @@ namespace CareerVault_Backend.Interfaces
             return await query.FirstOrDefaultAsync();
         }
 
-        // LEVEL
-        public async Task<JobLevel[]> GetAllLevelsAsync()
+        // JOBLEVEL
+        public async Task<JobLevel[]> GetAllJobLevelsAsync()
         {
             IQueryable<JobLevel> query = _context.JobLevels;
             return await query.ToArrayAsync();
         }
 
-        public async Task<JobLevel> GetLevelAsync(int levelID)
+        public async Task<JobLevel> GetJobLevelAsync(int levelID)
         {
             IQueryable<JobLevel> query = _context.JobLevels;
             return await query.FirstOrDefaultAsync();

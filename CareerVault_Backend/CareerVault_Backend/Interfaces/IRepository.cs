@@ -28,9 +28,9 @@ namespace CareerVault_Backend.Interfaces
         Task<Department[]> GetAllDepartmentsAsync();
         Task<Department> GetDepartmentAsync(int departmentID);
 
-        // LEVEL
-        Task<JobLevel[]> GetAllLevelsAsync();
-        Task<JobLevel> GetLevelAsync(int levelID);
+        // JOBLEVEL
+        Task<JobLevel[]> GetAllJobLevelsAsync();
+        Task<JobLevel> GetJobLevelAsync(int jobLevelID);
 
         // TITLE
         Task<Title[]> GetAllTitlesAsync();
