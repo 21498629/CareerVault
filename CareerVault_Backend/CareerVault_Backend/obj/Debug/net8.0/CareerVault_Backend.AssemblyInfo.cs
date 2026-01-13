@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CareerVault_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8c0ccb755eb7ae9d7021e532e245639bf8e96d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3137e14d7922d6da002ca42619ff7c073d24ce75")]
 [assembly: System.Reflection.AssemblyProductAttribute("CareerVault_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CareerVault_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

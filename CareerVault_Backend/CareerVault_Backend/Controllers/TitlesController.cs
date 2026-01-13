@@ -34,10 +34,10 @@ namespace CareerVault_Backend.Controllers
                     Id = t.Id,
                     Name = t.Name,
                     Description = t.Description,
-                    Department = t.Department.Name,
-                    JobLevel = t.JobLevel.Name,
-                    Position = t.Position.Name,
-                    OfficeLocation = t.OfficeLocation.Name,
+                    DepartmentId = t.DepartmentId,
+                    JobLevelId = t.JobLevelId,
+                    PositionId = t.PositionId,
+                    OfficeLocationId = t.OfficeLocationId,
                     MinSalary = t.MinSalary,
                     MaxSalary = t.MaxSalary
                 })
@@ -70,7 +70,7 @@ namespace CareerVault_Backend.Controllers
         // ADD TITLE
         [HttpPost]
         [Route("AddTitle")]
-        public async Task<IActionResult> AddTitle(TitleVM tvm)
+        /*public async Task<IActionResult> AddTitle(TitleVM tvm)
         {
             var title = new Title
             {
@@ -95,9 +95,46 @@ namespace CareerVault_Backend.Controllers
             }
 
             return Ok(title);
+        }*/
+
+        public async Task<IActionResult> AddTitle([FromBody] TitleVM model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Optional FK validation (recommended)
+            /*if (!await _context.JobLevels.AnyAsync(j => j.Id == model.JobLevelId))
+                return BadRequest("Invalid JobLevel");
+
+            if (!await _context.Departments.AnyAsync(d => d.Id == model.DepartmentId))
+                return BadRequest("Invalid Department");
+
+            if (!await _context.OfficeLocations.AnyAsync(o => o.Id == model.OfficeLocationId))
+                return BadRequest("Invalid Office Location");
+
+            if (!await _context.Positions.AnyAsync(p => p.Id == model.PositionId))
+                return BadRequest("Invalid Position");*/
+
+            var title = new Title
+            {
+                Name = model.Name,
+                Description = model.Description,
+                MinSalary = model.MinSalary,
+                MaxSalary = model.MaxSalary,
+                JobLevelId = model.JobLevelId,
+                DepartmentId = model.DepartmentId,
+                OfficeLocationId = model.OfficeLocationId,
+                PositionId = model.PositionId
+            };
+
+            _context.Titles.Add(title);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Title created successfully", title.Id });
         }
 
-        // EDIT DEPARTMENT
+
+        // EDIT TITLE
         [HttpPut]
         [Route("EditTitle/{TitleID}")]
         public async Task<ActionResult<TitleVM>> EditTitle(int TitleID, TitleVM tvm)
@@ -124,11 +161,12 @@ namespace CareerVault_Backend.Controllers
             return BadRequest("Your request is invalid");
         }
 
-        // DELETE DEPARTMENTS
+        // DELETE TITLE
         [HttpDelete]
         [Route("DeleteTitle/{TitleID}")]
         public async Task<IActionResult> DeleteTitle(int TitleID)
         {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             try
             {
                 var existingTitle = await _repository.GetTitleAsync(TitleID);

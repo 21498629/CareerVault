@@ -16,13 +16,13 @@ namespace CareerVault_Backend.Models.Job
 
         // FOREIGN KEYS
         public int JobLevelId { get; set; }
-        public JobLevel JobLevel { get; set; }
+        public JobLevel JobLevel { get; set; } = null!;
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public Department Department { get; set; } = null!;
         public int OfficeLocationId { get; set; }
-        public OfficeLocation OfficeLocation { get; set; }
+        public OfficeLocation OfficeLocation { get; set; } = null!;
         public int PositionId { get; set; }
-        public Position Position { get; set; }
+        public Position Position { get; set; } = null!;
         public ICollection<Employee> Employees { get; set; }
     }
 }
